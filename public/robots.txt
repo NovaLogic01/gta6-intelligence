@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gta6intel.com/sitemap.xml
