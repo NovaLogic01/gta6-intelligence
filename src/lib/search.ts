@@ -147,14 +147,14 @@ export function search(query: string): SearchResult[] {
 
   // Search trailers
   for (const trailer of trailers) {
-    const titleScore = scoreMatch(trailer.title, query)
+    const titleScore = scoreMatch(trailer.name, query)
     const descScore = scoreMatch(trailer.description, query) * 0.6
     const maxScore = Math.max(titleScore, descScore)
     
     if (maxScore > 0) {
       results.push({
         id: trailer.id,
-        title: trailer.title,
+        title: trailer.name,
         type: 'trailer',
         status: trailer.status,
         description: trailer.description,

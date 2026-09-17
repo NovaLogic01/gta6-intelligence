@@ -11,9 +11,10 @@ export const vehicles: Vehicle[] = [
     knownInformation: [
       'Spotted driving in Vice City streets in Trailer 1'
     ],
-    sourceIds: ['rockstar-games'],
+    sourceIds: ['rockstar-newswire'],
     lastUpdated: '2023-12-05T00:00:00Z',
-    isSeedData: true,
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
     vehicleType: 'Sports Car',
     manufacturer: 'Pfister',
     realWorldInspiration: 'Porsche 911'
@@ -28,9 +29,10 @@ export const vehicles: Vehicle[] = [
     knownInformation: [
       'Seen navigating the Everglades-like swamps of Leonida in Trailer 1'
     ],
-    sourceIds: ['rockstar-games'],
+    sourceIds: ['rockstar-newswire'],
     lastUpdated: '2023-12-05T00:00:00Z',
-    isSeedData: true,
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
     vehicleType: 'Boat',
     realWorldInspiration: 'Everglades Airboat'
   },
@@ -44,26 +46,12 @@ export const vehicles: Vehicle[] = [
     knownInformation: [
       'Visible parked and driving in various trailer scenes'
     ],
-    sourceIds: ['rockstar-games'],
+    sourceIds: ['rockstar-newswire'],
     lastUpdated: '2023-12-05T00:00:00Z',
-    isSeedData: true,
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
     vehicleType: 'Muscle Car',
     manufacturer: 'Declasse',
     realWorldInspiration: '1972 Chevrolet Chevelle Malibu'
-  },
-  {
-    id: 'veh-sea-sparrow',
-    slug: 'sea-sparrow-sample',
-    name: '[Sample Data] Sea Sparrow',
-    description: 'An amphibious helicopter.',
-    status: 'SPECULATION',
-    category: 'vehicle',
-    knownInformation: [
-      'Expected to return due to the heavy presence of water environments'
-    ],
-    sourceIds: ['gamespot'],
-    lastUpdated: '2024-05-12T00:00:00Z',
-    isSeedData: true,
-    vehicleType: 'Helicopter'
   }
 ]

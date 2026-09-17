@@ -4,6 +4,8 @@ import { locations } from './locations'
 import { vehicles } from './vehicles'
 import { features } from './features'
 import { trailers } from './trailers'
+import { gameplay } from './gameplay'
+import { activities } from './activities'
 
 export const databaseCategories: DatabaseCategory[] = [
   {
@@ -48,7 +50,7 @@ export const databaseCategories: DatabaseCategory[] = [
     name: 'Gameplay',
     description: 'Gameplay mechanics and systems',
     icon: '🎮',
-    count: 0,
+    count: gameplay.length,
     href: '/database/gameplay',
   },
   {
@@ -83,8 +85,8 @@ export const databaseCategories: DatabaseCategory[] = [
     slug: 'activities',
     name: 'Activities',
     description: 'In-game activities and side content',
-    icon: '🎯',
-    count: 0,
+    icon: '⚽',
+    count: activities.length,
     href: '/database/activities',
   },
 ]

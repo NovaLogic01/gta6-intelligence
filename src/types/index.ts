@@ -61,6 +61,39 @@ export interface Article {
 }
 
 // ==========================================
+// RELATIONSHIPS & EVIDENCE
+// ==========================================
+
+export type RelationshipType = 
+  | 'APPEARS_IN' 
+  | 'LOCATED_IN' 
+  | 'CONNECTED_TO' 
+  | 'ASSOCIATED_WITH' 
+  | 'FEATURED_IN' 
+  | 'MENTIONED_IN' 
+  | 'DEMONSTRATED_IN' 
+  | 'OCCURS_IN' 
+  | 'PART_OF'
+
+export interface Evidence {
+  sourceId: string
+  url?: string
+  sourceType: SourceType
+  publishedAt?: string
+  checkedAt: string
+  note?: string
+}
+
+export interface Relationship {
+  id: string
+  fromEntityId: string
+  toEntityId: string
+  relationshipType: RelationshipType
+  status: Status
+  sourceRefs: Evidence[]
+}
+
+// ==========================================
 // BASE ENTITY
 // ==========================================
 
@@ -73,11 +106,13 @@ export interface BaseEntity {
   category: EntityType
   knownInformation: string[]
   sourceIds: string[]
-  relatedEntityIds?: string[]
+  evidence?: Evidence[] // Formal evidence trails
+  relatedEntityIds?: string[] // Kept for simple backwards compatibility, but graph relationships are preferred
   relatedArticleIds?: string[]
   lastUpdated: string // ISO date
+  lastVerifiedAt?: string // ISO date for verification freshness
   isSeedData: boolean
-  imageDescription?: string // Description for future image
+  imageDescription?: string
 }
 
 // ==========================================
@@ -129,20 +164,12 @@ export interface Activity extends BaseEntity {
 // TRAILER
 // ==========================================
 
-export interface Trailer {
-  id: string
-  slug: string
-  title: string
-  description: string
-  status: Status
+export interface Trailer extends BaseEntity {
+  category: 'trailer'
   releaseDate: string // ISO date
   officialUrl?: string // Official YouTube URL
   embedId?: string // YouTube video ID for embedding
   duration?: string
-  sourceId: string
-  relatedEntityIds?: string[]
-  relatedArticleIds?: string[]
-  isSeedData: boolean
   keyDetails?: string[]
 }
 

@@ -33,7 +33,7 @@ export default function TrailersPage() {
               <span className="h-px flex-1 bg-border-primary/50"></span>
             </div>
             <h2 className="text-2xl font-semibold text-text-primary tracking-tight mb-3">
-              {trailer.title}
+              {trailer.name}
             </h2>
             <p className="text-body-sm mb-4 line-clamp-2">
               {trailer.description}
