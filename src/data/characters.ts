@@ -31,7 +31,7 @@ export const characters: Character[] = [
       'Visual appearance officially confirmed in Trailer 1',
       'Name widely reported but technically unconfirmed by Rockstar directly'
     ],
-    sourceIds: ['ign', 'rockstar-newswire'],
+    sourceIds: ['gamer-guides', 'rockstar-newswire'],
     lastUpdated: '2023-12-05T00:00:00Z',
     lastVerifiedAt: new Date().toISOString(),
     isSeedData: false,

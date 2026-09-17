@@ -54,4 +54,24 @@ export const vehicles: Vehicle[] = [
     manufacturer: 'Declasse',
     realWorldInspiration: '1972 Chevrolet Chevelle Malibu'
   }
+,
+
+  {
+    id: 'veh-cheetah',
+    slug: 'cheetah',
+    name: 'Grotti Cheetah',
+    description: 'The classic Grotti Cheetah sports car appears heavily detailed in Trailer 1.',
+    status: 'OFFICIALLY_SHOWN',
+    category: 'vehicle',
+    knownInformation: [
+      'Seen speeding down the highway and cruising the strip in Vice City.'
+    ],
+    sourceIds: ['rockstar-games'],
+    lastUpdated: new Date().toISOString(),
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
+    vehicleType: 'Sports Car',
+    manufacturer: 'Grotti'
+  }
+
 ]

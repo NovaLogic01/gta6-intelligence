@@ -9,6 +9,13 @@ export const sources: Source[] = [
     priority: 1,
   },
   {
+    id: 'gamer-guides',
+    name: 'Gamer Guides',
+    url: 'https://www.gamerguides.com',
+    type: 'NEWS',
+    priority: 2,
+  },
+  {
     id: 'rockstar-newswire',
     name: 'Rockstar Newswire',
     url: 'https://www.rockstargames.com/newswire',

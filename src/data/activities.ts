@@ -34,4 +34,23 @@ export const activities: Activity[] = [
     isSeedData: false,
     activityType: 'Illegal'
   }
+,
+
+  {
+    id: 'act-high-roller-club',
+    slug: 'high-roller-club',
+    name: 'High Roller Club',
+    description: 'A nightlife or party location/activity shown in the trailer.',
+    status: 'OFFICIALLY_SHOWN',
+    category: 'activity',
+    knownInformation: [
+      'Scenes of dense, highly detailed clubbing environments.'
+    ],
+    sourceIds: ['rockstar-games'],
+    lastUpdated: new Date().toISOString(),
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
+    activityType: 'Recreation'
+  }
+
 ]

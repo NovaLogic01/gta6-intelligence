@@ -72,4 +72,56 @@ export const locations: Location[] = [
     locationType: 'Airport',
     region: 'Vice City'
   }
+,
+
+  {
+    id: 'loc-port-gelhorn',
+    slug: 'port-gelhorn',
+    name: 'Port Gelhorn',
+    description: 'A city or significant area within the state of Leonida, identified by police vehicles and signage.',
+    status: 'OFFICIALLY_SHOWN',
+    category: 'location',
+    knownInformation: [
+      'Police cruisers are explicitly marked with "Port Gelhorn"',
+      'Seen in various street-level shots in Trailer 1'
+    ],
+    sourceIds: ['rockstar-games'],
+    lastUpdated: new Date().toISOString(),
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
+    locationType: 'City'
+  },
+  {
+    id: 'loc-hamlet',
+    slug: 'hamlet',
+    name: 'Hamlet',
+    description: 'A location in Leonida shown via an overhead shot in the trailer.',
+    status: 'OFFICIALLY_SHOWN',
+    category: 'location',
+    knownInformation: [
+      'A sign reads "Hamlet" during an overhead shot of a highway and residential area.'
+    ],
+    sourceIds: ['rockstar-games'],
+    lastUpdated: new Date().toISOString(),
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
+    locationType: 'Area'
+  },
+  {
+    id: 'loc-ocean-view',
+    slug: 'ocean-view-hotel',
+    name: 'Ocean View Hotel',
+    description: 'The iconic Ocean View Hotel returns in the GTA VI rendition of Vice City.',
+    status: 'OFFICIALLY_SHOWN',
+    category: 'location',
+    knownInformation: [
+      'A hotel with the Ocean View name is clearly visible along the Vice City beach strip.'
+    ],
+    sourceIds: ['rockstar-games'],
+    lastUpdated: new Date().toISOString(),
+    lastVerifiedAt: new Date().toISOString(),
+    isSeedData: false,
+    locationType: 'Landmark'
+  }
+
 ]
