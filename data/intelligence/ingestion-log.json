@@ -1,5 +1,31 @@
 [
   {
+    "runId": "run-1789657660916",
+    "startedAt": "2026-09-17T15:07:40.916Z",
+    "isDryRun": false,
+    "sourcesAttempted": 2,
+    "sourcesSucceeded": 2,
+    "sourcesFailed": 0,
+    "itemsFetched": 17,
+    "itemsRelevant": 15,
+    "itemsRejected": 2,
+    "itemsAdded": 0,
+    "duplicatesRemoved": 15
+  },
+  {
+    "runId": "run-1789657637350",
+    "startedAt": "2026-09-17T15:07:17.351Z",
+    "isDryRun": false,
+    "sourcesAttempted": 2,
+    "sourcesSucceeded": 2,
+    "sourcesFailed": 0,
+    "itemsFetched": 17,
+    "itemsRelevant": 15,
+    "itemsRejected": 2,
+    "itemsAdded": 0,
+    "duplicatesRemoved": 15
+  },
+  {
     "runId": "run-1789657147721",
     "startedAt": "2026-09-17T14:59:07.721Z",
     "isDryRun": false,
