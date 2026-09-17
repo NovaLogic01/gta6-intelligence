@@ -1,0 +1,28 @@
+[
+  {
+    "runId": "run-1789657147721",
+    "startedAt": "2026-09-17T14:59:07.721Z",
+    "isDryRun": false,
+    "sourcesAttempted": 2,
+    "sourcesSucceeded": 2,
+    "sourcesFailed": 0,
+    "itemsFetched": 17,
+    "itemsRelevant": 15,
+    "itemsRejected": 2,
+    "itemsAdded": 0,
+    "duplicatesRemoved": 15
+  },
+  {
+    "runId": "run-1789657127392",
+    "startedAt": "2026-09-17T14:58:47.392Z",
+    "isDryRun": false,
+    "sourcesAttempted": 2,
+    "sourcesSucceeded": 2,
+    "sourcesFailed": 0,
+    "itemsFetched": 17,
+    "itemsRelevant": 15,
+    "itemsRejected": 2,
+    "itemsAdded": 7,
+    "duplicatesRemoved": 8
+  }
+]

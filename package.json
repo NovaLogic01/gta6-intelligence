@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "intelligence:fetch": "tsx scripts/intelligence/run.ts",
+    "intelligence:dry-run": "tsx scripts/intelligence/run.ts --dry-run",
+    "intelligence:validate": "tsx -e \"import { validateArticles } from './scripts/intelligence/validate.ts'; import { articles } from './src/data/articles.ts'; if (validateArticles(articles)) { console.log('VALIDATE: PASS'); process.exit(0); } else { console.log('VALIDATE: FAIL'); process.exit(1); }\"",
+    "intelligence:test": "tsx scripts/intelligence/test.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
     "next": "^14.2.15",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "rss-parser": "^3.13.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
@@ -23,6 +28,7 @@
     "eslint-config-next": "^14.2.15",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
+    "tsx": "^4.23.13",
     "typescript": "^5.4.5"
   }
 }
