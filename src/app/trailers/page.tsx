@@ -1,105 +1,54 @@
-import type { Metadata } from 'next'
-import { trailers } from '@/data/trailers'
-import { SectionHeader } from '@/components/ui/SectionHeader'
-import { StatusBadge } from '@/components/ui/StatusBadge'
-import { formatDate } from '@/lib/utils'
-import { getSourceById } from '@/data/sources'
+import { trailers } from '@/data/trailers';
 
-export const metadata: Metadata = {
-  title: 'Trailers',
-  description: 'Official GTA VI trailer archive with detailed breakdowns and key observations.',
-}
+export const metadata = {
+  title: 'Trailers & Media | GTA VI Platform',
+  description: 'Archive of official GTA VI trailers and official media.',
+};
 
 export default function TrailersPage() {
   return (
-    <div className="section-spacing">
-      <div className="container-wide max-w-5xl mx-auto">
-        <SectionHeader
-          eyebrow="Trailers"
-          title="Official Trailer Archive"
-          description="Every official GTA VI trailer with detailed observations and analysis."
-        />
+    <div className="container-wide section-spacing">
+      <div className="mb-16 border-b border-border-primary pb-8">
+        <h1 className="text-heading mb-4">
+          Media <span className="font-light text-text-secondary">Archive</span>
+        </h1>
+        <p className="text-body max-w-2xl font-light">
+          An archive of officially released trailers and primary visual evidence.
+        </p>
+      </div>
 
-        <div className="space-y-12">
-          {trailers.map((trailer) => {
-            const source = getSourceById(trailer.sourceId)
-
-            return (
-              <div key={trailer.id} id={trailer.id} className="card-base overflow-hidden">
-                {/* Video embed */}
-                {trailer.embedId && (
-                  <div className="aspect-video bg-black relative">
-                    <iframe
-                      className="absolute inset-0 w-full h-full"
-                      src={`https://www.youtube-nocookie.com/embed/${trailer.embedId}`}
-                      title={trailer.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      loading="lazy"
-                    />
-                  </div>
-                )}
-
-                {/* Info */}
-                <div className="p-6 lg:p-8">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <StatusBadge status={trailer.status} size="md" />
-                    {trailer.duration && (
-                      <span className="text-caption text-text-tertiary">Duration: {trailer.duration}</span>
-                    )}
-                  </div>
-
-                  <h2 className="text-heading font-display text-text-primary mb-2">
-                    {trailer.title}
-                  </h2>
-                  <time className="text-body-sm text-accent-blue block mb-4" dateTime={trailer.releaseDate}>
-                    Released {formatDate(trailer.releaseDate)}
-                  </time>
-
-                  <p className="text-body text-text-secondary mb-6 leading-relaxed">
-                    {trailer.description}
-                  </p>
-
-                  {/* Key details */}
-                  {trailer.keyDetails && trailer.keyDetails.length > 0 && (
-                    <div className="mb-6">
-                      <h3 className="text-overline text-text-secondary uppercase tracking-wider mb-3">Key Observations</h3>
-                      <ul className="space-y-2">
-                        {trailer.keyDetails.map((detail, idx) => (
-                          <li key={idx} className="flex items-start gap-3 text-body-sm text-text-secondary">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent-blue/40 mt-1.5 flex-shrink-0" aria-hidden="true" />
-                            {detail}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Meta */}
-                  <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-border-primary text-caption text-text-muted">
-                    {source && (
-                      <span>Source: <span className="text-text-tertiary">{source.name}</span></span>
-                    )}
-                    {trailer.officialUrl && (
-                      <>
-                        <span aria-hidden="true">&middot;</span>
-                        <a
-                          href={trailer.officialUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-accent-blue hover:text-accent-blue-muted transition-colors"
-                        >
-                          Watch on YouTube
-                        </a>
-                      </>
-                    )}
-                  </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        {trailers.map(trailer => (
+          <div key={trailer.id} className="group">
+            <div className="aspect-video bg-bg-secondary/50 border border-border-primary/50 relative mb-6 overflow-hidden flex items-center justify-center">
+              <div className="absolute inset-0 bg-noise opacity-50"></div>
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center bg-black/40 backdrop-blur-md group-hover:scale-110 transition-transform">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
                 </div>
               </div>
-            )
-          })}
-        </div>
+            </div>
+            <div className="flex items-center gap-4 mb-3">
+              <span className="text-caption text-accent-blue tracking-widest">{new Date(trailer.releaseDate).getFullYear()}</span>
+              <span className="h-px flex-1 bg-border-primary/50"></span>
+            </div>
+            <h2 className="text-2xl font-semibold text-text-primary tracking-tight mb-3">
+              {trailer.title}
+            </h2>
+            <p className="text-body-sm mb-4 line-clamp-2">
+              {trailer.description}
+            </p>
+            <a 
+              href={trailer.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-mono text-text-secondary hover:text-accent-blue transition-colors"
+            >
+              [ACCESS OFFICIAL SOURCE]
+            </a>
+          </div>
+        ))}
       </div>
     </div>
-  )
+  );
 }

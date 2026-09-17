@@ -76,7 +76,7 @@ export default function SearchPage() {
                   <div className="card-base card-hover p-4">
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                       <span className="text-caption text-text-tertiary uppercase tracking-wider">{result.type}</span>
-                      <StatusBadge status={result.status} size="sm" />
+                      <StatusBadge status={result.status as any} size="sm" />
                     </div>
                     <h2 className="text-body-lg font-semibold text-text-primary group-hover:text-accent-blue transition-colors mb-1">
                       {result.title}

@@ -28,73 +28,100 @@
 
   body {
     background-color: #0a0a0c;
-    color: #e8e8ec;
-    min-height: 100vh;
-    overflow-x: hidden;
+    @apply bg-bg-primary text-text-primary font-sans antialiased selection:bg-accent-blue/30 selection:text-white;
   }
 
-  ::selection {
-    background-color: rgba(59, 130, 246, 0.3);
-    color: #e8e8ec;
-  }
-
-  /* Scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #0a0a0c;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2a2a36;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #3a3a48;
-  }
-
-  /* Focus */
-  :focus-visible {
-    outline: 2px solid rgba(59, 130, 246, 0.6);
-    outline-offset: 2px;
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
 }
 
 @layer components {
-  .container-wide {
-    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  /* Intelligence Grid Background */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, var(--border-subtle) 1px, transparent 1px),
+                      linear-gradient(to bottom, var(--border-subtle) 1px, transparent 1px);
   }
 
-  .container-article {
-    @apply max-w-article mx-auto px-4 sm:px-6;
+  /* Cinematic Noise Overlay */
+  .bg-noise {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode: screen;
   }
 
-  .section-spacing {
-    @apply py-16 sm:py-20 lg:py-24;
+  /* Editorial Layouts */
+  .editorial-row {
+    @apply flex flex-col sm:flex-row items-start sm:items-center py-5 border-b border-border-primary transition-colors hover:bg-bg-secondary/30;
+  }
+  
+  .dossier-panel {
+    @apply bg-bg-secondary border border-border-primary/50 relative overflow-hidden;
+  }
+  
+  .dossier-panel::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-border-primary/30;
   }
 
   .card-base {
-    @apply bg-bg-secondary border border-border-primary rounded-card transition-all duration-200;
+    @apply bg-bg-secondary/50 border border-border-primary/50 backdrop-blur-sm relative transition-all duration-300;
   }
 
   .card-hover {
-    @apply hover:bg-bg-tertiary hover:border-border-secondary;
+    @apply hover:bg-bg-tertiary/60 hover:border-border-primary hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:-translate-y-[2px];
   }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-text-primary to-text-secondary;
+  .container-wide {
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  .grid-topographic {
-    background-image: 
-      linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-32;
   }
 
-  .status-badge {
-    @apply inline-flex items-center px-2 py-0.5 text-overline rounded-subtle font-semibold tracking-wider uppercase;
+  .text-heading {
+    @apply text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1];
   }
+
+  .text-subheading {
+    @apply text-xl md:text-2xl font-semibold tracking-tight text-text-secondary;
+  }
+
+  .text-body {
+    @apply text-base md:text-lg text-text-secondary leading-relaxed;
+  }
+
+  .text-caption {
+    @apply text-xs uppercase tracking-widest text-text-tertiary font-mono;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-subtle text-sm font-medium transition-colors bg-accent-blue text-white hover:bg-[#60a5fa] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-blue focus:ring-offset-bg-primary;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium transition-colors bg-bg-tertiary border border-border-primary text-text-primary hover:bg-border-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-border-primary focus:ring-offset-bg-primary;
+  }
+}
+
+/* Custom Scrollbar for Intelligence Vibe */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary); 
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46; 
 }
 
 @layer utilities {

@@ -11,45 +11,25 @@ export function EntityCard({ entity, basePath }: EntityCardProps) {
   return (
     <Link
       href={`${basePath}/${entity.slug}`}
-      className="group block card-base card-hover p-5"
+      className="dossier-panel p-6 group block hover:border-border-primary transition-colors flex flex-col h-full"
     >
-      {/* Icon / Visual placeholder */}
-      <div className="w-full h-32 rounded-subtle bg-bg-primary/50 border border-border-primary mb-4 flex items-center justify-center overflow-hidden">
-        <div className="text-text-muted/30 text-4xl select-none">
-          {entity.category === 'character' && '👤'}
-          {entity.category === 'location' && '📍'}
-          {entity.category === 'vehicle' && '🚗'}
-          {entity.category === 'feature' && '⚡'}
-          {entity.category === 'gameplay' && '🎮'}
-          {entity.category === 'wildlife' && '🐊'}
-          {entity.category === 'activity' && '🎯'}
-        </div>
-      </div>
-
-      <div className="flex items-center gap-2 mb-2">
+      <div className="flex items-center justify-between mb-4 border-b border-border-primary/30 pb-4">
         <StatusBadge status={entity.status} size="sm" />
-        <span className="text-caption text-text-tertiary uppercase tracking-wider">{entity.category}</span>
+        <span className="text-caption text-text-tertiary font-mono uppercase tracking-widest">{entity.category}</span>
       </div>
 
-      <h3 className="text-body-lg font-semibold text-text-primary group-hover:text-accent-blue transition-colors mb-1.5 line-clamp-1">
+      <h3 className="text-xl font-medium text-text-primary group-hover:text-accent-blue transition-colors mb-3 line-clamp-1">
         {entity.name}
       </h3>
 
-      <p className="text-body-sm text-text-secondary line-clamp-2 mb-3">
+      <p className="text-body-sm text-text-secondary line-clamp-3 mb-6 flex-1 font-light">
         {entity.description}
       </p>
 
-      {entity.knownInformation.length > 0 && (
-        <div className="text-caption text-text-tertiary">
-          {entity.knownInformation.length} known detail{entity.knownInformation.length !== 1 ? 's' : ''}
-        </div>
-      )}
-
-      {entity.isSeedData && (
-        <div className="mt-2 text-caption text-text-muted italic">
-          Seed Data
-        </div>
-      )}
+      <div className="flex items-center justify-between text-xs font-mono text-text-tertiary pt-4 border-t border-border-primary/30 mt-auto">
+        <span>{entity.knownInformation.length} RECORD{entity.knownInformation.length !== 1 ? 'S' : ''}</span>
+        <span className="opacity-50">ID: {entity.id.substring(0,8).toUpperCase()}</span>
+      </div>
     </Link>
   )
 }
