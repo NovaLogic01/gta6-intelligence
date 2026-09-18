@@ -1,66 +1,61 @@
 import { Metadata } from 'next';
-import { sources } from '@/data/sources';
 
 export const metadata: Metadata = {
-  title: 'Sources | GTA VI Intelligence Platform',
-  description: 'The sources and references used to compile the GTA VI Intelligence Platform.',
+  title: 'Sources & Ingestion | GTA VI Intelligence Platform',
+  description: 'How we track, verify, and document intelligence sources.',
 };
 
 export default function SourcesPage() {
-  const groupedSources = sources.reduce((acc, source) => {
-    if (!acc[source.type]) {
-      acc[source.type] = [];
-    }
-    acc[source.type].push(source);
-    return acc;
-  }, {} as Record<string, typeof sources>);
-
-  const typeOrder = ['OFFICIAL', 'NEWS', 'REPORTING', 'COMMUNITY'];
-
   return (
-    <main className="container-article mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-6 text-white">Intelligence Sources</h1>
-      
-      <div className="mb-12">
-        <p className="text-body text-text-secondary leading-relaxed">
-          The integrity of the GTA VI Intelligence Platform relies on the careful categorization and evaluation of our sources. We organize sources into distinct tiers to help users understand the origin and reliability of the information presented.
+    <main className="container-article mx-auto px-4 py-12 max-w-4xl min-h-screen">
+      <header className="mb-12 pb-8 border-b border-border-primary/50">
+        <h1 className="text-4xl font-bold mb-4 text-text-primary tracking-tighter">Sources</h1>
+        <p className="text-xl text-text-secondary font-light">
+          Understanding our intelligence origins and ingestion pipelines.
         </p>
-      </div>
+      </header>
 
-      <div className="space-y-12">
-        {typeOrder.map((type) => {
-          const typeSources = groupedSources[type];
-          if (!typeSources || typeSources.length === 0) return null;
+      <div className="editorial-content text-text-secondary font-light space-y-8">
+        <section>
+          <p>
+            The accuracy of the GTA VI Intelligence Platform depends entirely on the quality of its sources. We categorize our sources into three strict tiers to govern how data is weighted within our knowledge graph.
+          </p>
+        </section>
 
-          return (
-            <section key={type} className="section-spacing">
-              <h2 className="text-2xl font-semibold mb-6 text-white capitalize border-b border-gray-800 pb-2">
-                {type.toLowerCase()}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {typeSources
-                  .sort((a, b) => (b.priority || 0) - (a.priority || 0))
-                  .map((source) => (
-                    <a
-                      key={source.id || source.name}
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block p-4 rounded-lg bg-gray-900 border border-gray-800 hover:border-gray-600 transition-colors"
-                    >
-                      <h3 className="font-medium text-white mb-1">{source.name}</h3>
-                      <p className="text-sm text-gray-400 break-all">{source.url}</p>
-                      {source.priority && (
-                        <span className="inline-block mt-2 text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded">
-                          Priority: {source.priority}
-                        </span>
-                      )}
-                    </a>
-                  ))}
-              </div>
-            </section>
-          );
-        })}
+        <section>
+          <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">Official / Primary Sources</h2>
+          <p>
+            Primary sources represent absolute confirmation. Intelligence derived from these sources bypasses secondary verification and is immediately marked as <strong>CONFIRMED</strong> or <strong>OFFICIALLY_SHOWN</strong>.
+          </p>
+          <ul className="list-disc list-inside space-y-2 mt-4 ml-4">
+            <li>Rockstar Games Newswire</li>
+            <li>Take-Two Interactive SEC Filings & Investor Calls</li>
+            <li>Official Rockstar Games Social Media Channels</li>
+            <li>Official Press Releases</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">Verified Secondary Sources</h2>
+          <p>
+            Secondary sources are established journalistic entities with a proven track record of insider reporting. Information from these sources is logged as <strong>REPORTED</strong>. It is treated as highly credible but remains distinct from official confirmation.
+          </p>
+          <ul className="list-disc list-inside space-y-2 mt-4 ml-4">
+            <li>Bloomberg (Jason Schreier)</li>
+            <li>IGN</li>
+            <li>Established gaming industry reporters</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">Automated Ingestion & Validation</h2>
+          <p>
+            To maintain a real-time intelligence database, we utilize automated ingestion pipelines that monitor verified RSS feeds and public signals. 
+          </p>
+          <p className="mt-4">
+            <strong>Important Note:</strong> Automated ingestion does not mean automatic publishing of unverified facts. All incoming data passes through a validation layer. If an unofficial source publishes a rumor, our system classifies it as <strong>RUMOR</strong>, not fact. We do not currently have a direct, private backend integration with Rockstar&apos;s internal systems; our automation relies strictly on publicly accessible, verified endpoints and standard web protocols.
+          </p>
+        </section>
       </div>
     </main>
   );
