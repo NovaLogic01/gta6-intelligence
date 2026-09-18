@@ -98,7 +98,7 @@ export default function ExplorePage() {
                       <StatusBadge status={currentEntity.status as any} size="md" />
                       <span className="w-px h-3 bg-border-primary"></span>
                       <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-widest">
-                        {currentEntity.category} // {currentEntity.id.substring(0,8)}
+                        {currentEntity.category} {'//'} {currentEntity.id.substring(0,8)}
                       </span>
                     </div>
                     

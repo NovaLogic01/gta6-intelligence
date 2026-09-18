@@ -66,7 +66,7 @@ export default function ShareCardPage({ params }: { params: { type: string, slug
               <StatusBadge status={status as any} size="md" />
               <div className="h-4 w-px bg-border-primary"></div>
               <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-widest">
-                CLASS: {category} // ID: {id.substring(0,8)}
+                CLASS: {category} {'//'} ID: {id.substring(0,8)}
               </span>
             </div>
 

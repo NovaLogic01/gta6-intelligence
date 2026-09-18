@@ -84,11 +84,11 @@ export default function Home() {
             {/* SECONDARY CONTEXT */}
             <div className="mt-16 pt-8 border-t border-border-primary/50 flex flex-wrap justify-center gap-8 text-caption text-text-muted animate-on-scroll visible" style={{ animationDelay: '400ms' }}>
               <div className="flex flex-col items-center">
-                <span className="text-text-primary mb-1">{graph.entities.length}</span>
+                <span className="text-text-primary mb-1">{allEntities.length}</span>
                 <span>Entities Tracked</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-text-primary mb-1">{graph.articles.length}</span>
+                <span className="text-text-primary mb-1">{articles.length}</span>
                 <span>Intel Reports</span>
               </div>
               <div className="flex flex-col items-center">
