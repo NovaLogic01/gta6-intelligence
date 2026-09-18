@@ -1,198 +1,240 @@
 import Link from 'next/link';
+import { allEntities } from '@/lib/graph';
 import { articles } from '@/data/articles';
-import { timelineEvents } from '@/data/timeline';
-import { databaseCategories as categories } from '@/data/categories';
-import { StatusBadge } from '@/components/ui/StatusBadge';
-import { DiscoveryQueue } from '@/components/ui/DiscoveryQueue';
-import { formatDistanceToNow } from '@/lib/dateUtils';
 
 export default function Home() {
-  const latestArticles = articles.slice(0, 5);
-  const recentDevelopments = timelineEvents.slice(0, 4);
+  // Sort articles by publishedAt descending
+  const recentArticles = [...articles]
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .slice(0, 5);
+
+  const categories = [
+    { id: 'characters', name: 'Characters', count: allEntities.filter(e => e.category === 'character').length, slug: 'characters' },
+    { id: 'locations', name: 'Locations', count: allEntities.filter(e => e.category === 'location').length, slug: 'locations' },
+    { id: 'vehicles', name: 'Vehicles', count: allEntities.filter(e => e.category === 'vehicle').length, slug: 'vehicles' },
+    { id: 'features', name: 'Features', count: allEntities.filter(e => e.category === 'feature').length, slug: 'features' },
+    { id: 'activities', name: 'Activities', count: allEntities.filter(e => e.category === 'activity').length, slug: 'activities' },
+    { id: 'gameplay', name: 'Gameplay', count: allEntities.filter(e => e.category === 'gameplay').length, slug: 'gameplay' },
+  ];
 
   return (
-    <div className="flex flex-col min-h-screen relative overflow-hidden">
-      
-      {/* CINEMATIC HERO */}
-      <section className="relative min-h-[85vh] flex items-center pt-24 pb-16 overflow-hidden">
-        {/* Deep Atmospheric Background */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent"></div>
-        <div className="absolute top-[-20%] right-[-10%] w-[70vw] h-[70vw] rounded-full bg-accent-blue/5 blur-[120px] pointer-events-none"></div>
+    <div className="flex flex-col min-h-screen">
+      {/* CINEMATIC HERO SECTION */}
+      <section className="relative min-h-[90vh] flex items-center justify-center border-b border-border-primary overflow-hidden bg-bg-primary">
+        
+        {/* Abstract Geometry Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Base Grid */}
+          <div className="absolute inset-0 bg-coordinate-grid opacity-20"></div>
+          
+          {/* Atmospheric Bloom */}
+          <div className="bloom w-[800px] h-[600px] bg-accent-blue-subtle top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-breathe"></div>
+          <div className="bloom w-[600px] h-[400px] bg-accent-amber-subtle bottom-0 right-0 translate-x-1/3 translate-y-1/3 opacity-30"></div>
+          
+          {/* Vignette */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#050507_100%)]"></div>
 
-        <div className="container-wide relative z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          {/* Abstract SVG Geometry (Leonida-inspired contour) */}
+          <svg className="absolute inset-0 w-full h-full opacity-10 animate-slow-pan" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="currentColor" strokeWidth="1" fill="none" className="text-accent-blue">
+              <path d="M-100,500 Q200,600 400,300 T900,400 T1200,600" />
+              <path d="M-100,520 Q200,620 400,320 T900,420 T1200,620" strokeDasharray="4,4"/>
+              <path d="M-100,540 Q200,640 400,340 T900,440 T1200,640" strokeOpacity="0.5"/>
+              <circle cx="400" cy="300" r="4" fill="currentColor" />
+              <circle cx="900" cy="400" r="4" fill="currentColor" />
+              <text x="410" y="295" fontSize="10" fontFamily="monospace" fill="currentColor">LND-01</text>
+              <text x="910" y="395" fontSize="10" fontFamily="monospace" fill="currentColor">VCE-02</text>
+            </g>
+          </svg>
+
+          {/* Film Grain */}
+          <div className="bg-film-grain"></div>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="container-wide relative z-10 pt-20">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
+            {/* EYEBROW */}
+            <div className="inline-flex items-center gap-2 mb-8 text-caption text-text-tertiary animate-on-scroll visible">
+              <span className="w-2 h-2 bg-accent-blue rounded-full"></span>
+              <span>GTA VI INTELLIGENCE PLATFORM</span>
+              <span className="w-2 h-2 bg-accent-blue rounded-full"></span>
+            </div>
             
-            <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="h-[1px] w-8 bg-accent-blue"></span>
-                <span className="text-caption text-accent-blue">Active Intelligence Desk</span>
+            {/* MASSIVE HEADLINE */}
+            <h1 className="text-hero md:text-hero-xl font-bold tracking-tighter mb-8 leading-[1.0] text-text-primary animate-on-scroll visible" style={{ animationDelay: '100ms' }}>
+              THE <br className="hidden sm:block"/>INTELLIGENCE <br className="hidden sm:block"/>LAYER
+            </h1>
+            
+            {/* SHORT EXPLANATION */}
+            <p className="text-body-lg text-text-secondary max-w-2xl mx-auto mb-10 font-light animate-on-scroll visible" style={{ animationDelay: '200ms' }}>
+              Everything we know. Structured, verified, and mapped from primary signals. Explore the definitive knowledge graph for the next generation of Grand Theft Auto.
+            </p>
+            
+            {/* PRIMARY ACTION */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-scroll visible" style={{ animationDelay: '300ms' }}>
+              <Link href="/explore" className="btn-primary w-full sm:w-auto min-w-[200px]">
+                Enter Database
+              </Link>
+              <Link href="/news" className="btn-secondary w-full sm:w-auto min-w-[200px]">
+                Latest Signals
+              </Link>
+            </div>
+            
+            {/* SECONDARY CONTEXT */}
+            <div className="mt-16 pt-8 border-t border-border-primary/50 flex flex-wrap justify-center gap-8 text-caption text-text-muted animate-on-scroll visible" style={{ animationDelay: '400ms' }}>
+              <div className="flex flex-col items-center">
+                <span className="text-text-primary mb-1">{graph.entities.length}</span>
+                <span>Entities Tracked</span>
               </div>
-              <h1 className="text-heading text-text-primary mb-6 drop-shadow-2xl font-light">
-                The <span className="font-bold">GTA VI</span> <br/>
-                Intelligence Platform.
-              </h1>
-              <p className="text-body text-text-secondary mb-10 max-w-xl text-lg sm:text-xl font-light leading-relaxed">
-                A serious, strictly classified database of confirmed information, verified reports, and critical metadata regarding the next generation of Grand Theft Auto.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/news" className="btn-primary tracking-wide backdrop-blur-sm">
-                  Access Latest Signals
-                </Link>
-                <Link href="/database" className="btn-secondary tracking-wide">
-                  Query Database
-                </Link>
+              <div className="flex flex-col items-center">
+                <span className="text-text-primary mb-1">{graph.articles.length}</span>
+                <span>Intel Reports</span>
+              </div>
+              <div className="flex flex-col items-center">
+                <span className="text-status-confirmed mb-1">LIVE</span>
+                <span>System Status</span>
               </div>
             </div>
-
-            {/* Featured Hero Story (Top Latest Article) */}
-            {latestArticles[0] && (
-              <div className="lg:col-span-5 w-full mt-12 lg:mt-0 relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-blue/10 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                <Link href={`/news/${latestArticles[0].slug}`} className="dossier-panel p-8 block relative z-10 hover:border-border-primary transition-colors h-full">
-                  <div className="flex justify-between items-start mb-6">
-                    <span className="text-caption text-text-tertiary">Priority Override</span>
-                    <StatusBadge status={latestArticles[0].status} size="sm" />
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-text-primary mb-4 leading-tight group-hover:text-accent-blue transition-colors">
-                    {latestArticles[0].title}
-                  </h2>
-                  <p className="text-body-sm text-text-secondary line-clamp-3 mb-6">
-                    {latestArticles[0].summary}
-                  </p>
-                  <div className="flex items-center justify-between text-caption border-t border-border-primary/30 pt-4">
-                    <span>{latestArticles[0].category}</span>
-                    <span>{formatDistanceToNow(new Date(latestArticles[0].publishedAt))}</span>
-                  </div>
-                </Link>
-              </div>
-            )}
           </div>
         </div>
       </section>
 
-      {/* INTELLIGENCE FEED */}
-      <section className="py-24 border-t border-border-subtle relative bg-bg-secondary/20">
-        <div className="container-wide">
-          <div className="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-border-primary/50 pb-6">
-            <h2 className="text-subheading font-light tracking-wide uppercase text-text-primary">
-              <span className="font-bold">Latest</span> Intercepts
+      {/* LATEST SIGNALS (Editorial Rows) */}
+      <section className="py-24 bg-bg-secondary relative">
+        <div className="container-wide max-w-4xl mx-auto">
+          <div className="flex justify-between items-baseline mb-8 border-b border-border-primary pb-4">
+            <h2 className="text-subheading font-medium tracking-tight text-text-primary">
+              Latest Signals
             </h2>
-            <Link href="/news" className="text-sm font-mono text-text-tertiary hover:text-accent-blue transition-colors mt-4 md:mt-0 flex items-center gap-2">
-              View All Signals <span aria-hidden="true">&rarr;</span>
+            <Link href="/news" className="text-caption text-text-secondary hover:text-accent-blue transition-colors">
+              VIEW ARCHIVE &rarr;
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-border-primary/30 border border-border-primary/30 rounded-sm overflow-hidden">
-            {latestArticles.slice(1, 5).map(article => (
-              <Link href={`/news/${article.slug}`} key={article.id} className="bg-bg-primary p-6 group hover:bg-bg-secondary/50 transition-colors flex flex-col h-full">
-                <div className="mb-4">
-                  <StatusBadge status={article.status} size="sm" />
-                </div>
-                <h3 className="text-lg font-medium text-text-primary mb-3 group-hover:text-accent-blue transition-colors leading-snug">
-                  {article.title}
-                </h3>
-                <div className="mt-auto pt-4 flex items-center justify-between text-caption border-t border-border-primary/20">
-                  <span className="truncate max-w-[120px]">{article.sourceUrl ? new URL(article.sourceUrl).hostname.replace('www.', '') : 'Unknown Source'}</span>
-                  <span>{new Date(article.publishedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}</span>
-                </div>
-              </Link>
-            ))}
+          <div className="flex flex-col">
+            {recentArticles.map((article, idx) => {
+              const isLead = idx === 0;
+              return (
+                <Link 
+                  key={article.id} 
+                  href={`/news/${article.slug}`}
+                  className={`editorial-row group relative ${isLead ? 'py-8' : 'py-5'}`}
+                >
+                  <div className="w-full sm:w-32 flex-shrink-0 text-caption text-text-muted mb-2 sm:mb-0 group-hover:text-accent-blue transition-colors">
+                    {new Date(article.publishedAt).toLocaleDateString(undefined, { month: 'short', day: '2-digit', year: 'numeric' })}
+                  </div>
+                  <div className="flex-grow pr-4">
+                    <h3 className={`${isLead ? 'text-2xl font-semibold' : 'text-lg font-medium'} text-text-primary group-hover:text-white transition-colors mb-2`}>
+                      {article.title}
+                    </h3>
+                    {isLead && (
+                      <p className="text-body-sm text-text-secondary mb-3 line-clamp-2">
+                        {article.summary}
+                      </p>
+                    )}
+                    <div className="flex items-center gap-3 text-[10px] uppercase font-mono tracking-wider text-text-tertiary">
+                      <span className="text-status-official border border-status-official/30 px-1.5 py-0.5 rounded-sm bg-status-official/5">
+                        {article.status}
+                      </span>
+                      {article.sourceUrl && (
+                        <span>SRC: {new URL(article.sourceUrl).hostname.replace('www.', '')}</span>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* RETENTION / DISCOVERY ENGINE */}
-      <section className="py-24 border-t border-border-subtle bg-bg-primary relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-accent-blue/5 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* INTELLIGENCE TOOLS (Terminal/Dossier aesthetic) */}
+      <section className="py-24 border-y border-border-primary bg-bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 bg-coordinate-grid opacity-10 pointer-events-none"></div>
         <div className="container-wide relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-border-primary/50 pb-6">
-            <h2 className="text-subheading font-light tracking-wide uppercase text-text-primary">
-              <span className="font-bold">Explore</span> Intelligence
+          <div className="mb-12 border-b border-border-primary pb-6">
+            <h2 className="text-subheading font-medium tracking-tight text-text-primary">
+              Intelligence Tools
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <Link href="/confirmed" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <Link href="/confirmed" className="dossier-panel p-6 group hover:bg-bg-hover transition-colors min-h-[160px] flex flex-col justify-between">
               <div>
-                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Verification Tool</div>
-                <h3 className="text-xl text-text-primary font-medium mb-3">Is This Confirmed?</h3>
+                <div className="text-caption text-text-tertiary mb-3 group-hover:text-accent-blue transition-colors">TOOL 01 // VERIFICATION</div>
+                <h3 className="text-lg text-text-primary font-medium mb-2">Is This Confirmed?</h3>
               </div>
-              <div className="text-sm text-text-secondary leading-relaxed font-light">Check claims deterministically against the knowledge base.</div>
+              <div className="text-sm text-text-secondary font-light">Check claims deterministically against the knowledge base.</div>
             </Link>
             
-            <Link href="/changes" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <Link href="/changes" className="dossier-panel p-6 group hover:bg-bg-hover transition-colors min-h-[160px] flex flex-col justify-between">
               <div>
-                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">History Log</div>
-                <h3 className="text-xl text-text-primary font-medium mb-3">Recent Activity</h3>
+                <div className="text-caption text-text-tertiary mb-3 group-hover:text-accent-blue transition-colors">TOOL 02 // LOGS</div>
+                <h3 className="text-lg text-text-primary font-medium mb-2">Recent Activity</h3>
               </div>
-              <div className="text-sm text-text-secondary leading-relaxed font-light">Track Database Additions</div>
+              <div className="text-sm text-text-secondary font-light">Track additions and chronological updates.</div>
             </Link>
 
-            <Link href="/explore" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <Link href="/explore" className="dossier-panel p-6 group hover:bg-bg-hover transition-colors min-h-[160px] flex flex-col justify-between">
               <div>
-                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Discovery</div>
-                <h3 className="text-xl text-text-primary font-medium mb-3">Knowledge Explorer</h3>
+                <div className="text-caption text-text-tertiary mb-3 group-hover:text-accent-blue transition-colors">TOOL 03 // DISCOVERY</div>
+                <h3 className="text-lg text-text-primary font-medium mb-2">Knowledge Explorer</h3>
               </div>
-              <div className="text-sm text-text-secondary leading-relaxed font-light">Navigate the intelligence network sequentially.</div>
+              <div className="text-sm text-text-secondary font-light">Navigate the intelligence network sequentially.</div>
             </Link>
 
-            <Link href="/timeline" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+            <Link href="/timeline" className="dossier-panel p-6 group hover:bg-bg-hover transition-colors min-h-[160px] flex flex-col justify-between">
               <div>
-                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Chronology</div>
-                <h3 className="text-xl text-text-primary font-medium mb-3">Interactive Timeline</h3>
+                <div className="text-caption text-text-tertiary mb-3 group-hover:text-accent-blue transition-colors">TOOL 04 // CHRONOLOGY</div>
+                <h3 className="text-lg text-text-primary font-medium mb-2">Interactive Timeline</h3>
               </div>
-              <div className="text-sm text-text-secondary leading-relaxed font-light">Follow the history of GTA VI becoming known.</div>
+              <div className="text-sm text-text-secondary font-light">Follow the history of GTA VI becoming known.</div>
             </Link>
           </div>
 
-          <div className="mt-12 pt-12 border-t border-border-primary/30">
-            <h3 className="text-sm font-mono tracking-widest text-text-tertiary mb-6 uppercase">Random Intelligence</h3>
-            <DiscoveryQueue />
+          <div className="mt-16 pt-12 border-t border-border-primary/50">
+            <h3 className="text-caption text-text-muted mb-6 uppercase tracking-widest">Awaiting spatial data integration...</h3>
           </div>
         </div>
       </section>
 
-      {/* ENTITY DATABASE MODULE */}
-      <section className="py-24 relative">
+      {/* THE DATABASE */}
+      <section className="py-24 relative bg-bg-secondary">
         <div className="container-wide">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-            <div className="lg:col-span-1 pr-4">
-              <h2 className="text-3xl font-light tracking-tight text-text-primary mb-6">
-                Entity <span className="font-bold">Database</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+            <div className="lg:col-span-4 pr-4">
+              <h2 className="text-heading text-text-primary mb-6">
+                The Database
               </h2>
-              <p className="text-body mb-8 font-light">
+              <p className="text-body mb-8 font-light max-w-sm">
                 Explore structured dossiers on characters, mapped locations, tracked vehicles, and confirmed features built from primary intelligence sources.
               </p>
-              <ul className="space-y-4 font-mono text-sm">
+              <ul className="space-y-0 border-t border-border-primary">
                 {categories.slice(0, 4).map(cat => (
                   <li key={cat.id}>
-                    <Link href={`/database/${cat.slug}`} className="flex items-center justify-between py-2 border-b border-border-primary/50 text-text-secondary hover:text-accent-blue transition-colors group">
-                      <span className="uppercase tracking-widest">{cat.name}</span>
-                      <span className="text-border-primary group-hover:text-accent-blue transition-colors">&rarr;</span>
+                    <Link href={`/database/${cat.slug}`} className="flex items-center justify-between py-4 border-b border-border-primary text-text-secondary hover:text-text-primary hover:bg-bg-hover transition-colors group px-2">
+                      <span className="text-sm font-medium tracking-wide uppercase">{cat.name}</span>
+                      <span className="text-caption text-text-muted group-hover:text-accent-blue transition-colors">[{cat.count} ENTRIES] &rarr;</span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
             
-            <div className="lg:col-span-2 relative">
-              <div className="absolute inset-0 border border-border-primary/30 p-2 pointer-events-none">
+            <div className="lg:col-span-8 relative">
+              <div className="absolute inset-0 border border-border-primary/50 p-2 pointer-events-none">
                 <div className="w-full h-full border border-border-subtle"></div>
               </div>
-              <div className="p-8 sm:p-12 relative z-10 flex flex-col justify-center h-full min-h-[300px] bg-bg-secondary/10">
-                <div className="text-caption text-text-tertiary mb-2">System Status</div>
-                <div className="text-2xl sm:text-4xl font-light text-text-primary mb-6 font-mono opacity-80">
+              <div className="p-8 sm:p-16 relative z-10 flex flex-col justify-center h-full min-h-[300px] bg-bg-primary/50 backdrop-blur-sm">
+                <div className="text-caption text-text-tertiary mb-3">SYSTEM STATUS</div>
+                <div className="text-3xl sm:text-5xl font-light text-text-primary mb-8 font-mono opacity-90">
                   DATABANKS <span className="text-status-confirmed font-bold">ONLINE</span>
                 </div>
-                <div className="flex items-center gap-4 text-xs font-mono text-text-muted">
-                  <span>LOC: LEONIDA</span>
-                  <span className="h-1 w-1 bg-text-muted rounded-full"></span>
-                  <span>SYS: GTA-VI</span>
+                <div className="flex flex-wrap items-center gap-6 text-caption text-text-muted">
+                  <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-accent-blue rounded-full"></span> LOC: LEONIDA</div>
+                  <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-status-confirmed rounded-full"></span> SYS: GTA-VI</div>
+                  <div className="flex items-center gap-2"><span className="w-1.5 h-1.5 bg-text-muted rounded-full"></span> NET: SECURE</div>
                 </div>
               </div>
             </div>

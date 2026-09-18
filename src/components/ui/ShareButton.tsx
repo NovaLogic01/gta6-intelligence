@@ -19,9 +19,9 @@ export function ShareButton({ title, description, url }: { title: string, descri
   return (
     <button 
       onClick={handleShare}
-      className="px-6 py-3 bg-bg-secondary text-text-primary text-sm font-mono tracking-widest uppercase rounded hover:bg-bg-tertiary transition-colors border border-border-primary/50"
+      className="px-8 py-4 bg-accent-blue/10 text-accent-blue font-mono text-[10px] tracking-widest uppercase hover:bg-accent-blue hover:text-white transition-colors border border-accent-blue/30"
     >
-      Share URL
+      Copy URL / Share
     </button>
   );
 }

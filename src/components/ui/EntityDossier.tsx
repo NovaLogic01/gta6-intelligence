@@ -11,25 +11,34 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
   const relatedTimeline = getRelatedTimelineEvents(entity.id)
   
   return (
-    <div className="section-spacing">
-      <div className="container-article">
+    <div className="section-spacing relative bg-bg-primary min-h-screen">
+      <div className="absolute inset-0 bg-coordinate-grid opacity-10 pointer-events-none"></div>
+      
+      <div className="container-article relative z-10">
         <Link
           href={backLink}
-          className="inline-flex items-center gap-2 text-xs font-mono text-text-tertiary hover:text-text-primary transition-colors mb-8 tracking-widest uppercase"
+          className="inline-flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase text-text-tertiary hover:text-text-primary transition-colors mb-12 group"
         >
-          [ {backLabel} ]
+          <span className="opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all">&larr;</span>
+          {backLabel}
         </Link>
 
-        <header className="mb-10 pb-8 border-b border-border-primary/50 relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent-blue/5 blur-[100px] rounded-full pointer-events-none"></div>
-          <div className="flex flex-wrap items-center gap-3 mb-6">
+        <header className="mb-16 pb-12 border-b border-border-primary/50 relative">
+          <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-accent-blue-subtle blur-[100px] rounded-full pointer-events-none opacity-20"></div>
+          
+          <div className="flex flex-wrap items-center gap-4 mb-6">
             <StatusBadge status={entity.status} size="md" />
-            <span className="text-xs font-mono text-text-tertiary uppercase tracking-widest border-l border-border-primary/50 pl-3">
-              {entity.category} {'//'} {entity.id.substring(0,8).toUpperCase()}
+            <span className="w-px h-3 bg-border-primary"></span>
+            <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-widest">
+              CLASS: {entity.category}
+            </span>
+            <span className="w-px h-3 bg-border-primary"></span>
+            <span className="text-[10px] font-mono text-text-tertiary uppercase tracking-widest">
+              ID: {entity.id.substring(0,8)}
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-text-primary font-medium tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl text-text-primary font-bold tracking-tighter mb-6 leading-[1.05]">
             {entity.name}
           </h1>
 
@@ -126,18 +135,20 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
             )}
 
             {/* SHARE / DISCOVERY TOOLS */}
-            <div className="mt-16 pt-8 border-t border-border-primary/30 flex flex-wrap gap-4">
+            <div className="pt-6 mt-6 border-t border-border-primary/30 flex flex-col gap-3">
               <Link 
                 href={`/share/entity/${entity.slug}`} 
-                className="px-6 py-3 bg-bg-secondary text-text-primary text-xs font-mono tracking-widest uppercase rounded hover:bg-bg-tertiary transition-colors border border-border-primary/50"
+                className="flex items-center justify-between px-4 py-3 bg-bg-primary text-text-primary text-[10px] font-mono tracking-widest uppercase hover:bg-bg-hover transition-colors border border-border-primary/50 group"
               >
-                Generate Share Card
+                <span>Generate Share Card</span>
+                <span className="text-text-tertiary group-hover:text-accent-blue">&rarr;</span>
               </Link>
               <Link 
                 href="/explore" 
-                className="px-6 py-3 bg-accent-blue/10 text-accent-blue text-xs font-mono tracking-widest uppercase rounded hover:bg-accent-blue/20 transition-colors border border-accent-blue/30"
+                className="flex items-center justify-between px-4 py-3 bg-accent-blue/5 text-accent-blue text-[10px] font-mono tracking-widest uppercase hover:bg-accent-blue/10 transition-colors border border-accent-blue/20 group"
               >
-                Explore Connections
+                <span>Explore Connections</span>
+                <span className="text-accent-blue/50 group-hover:text-accent-blue">&rarr;</span>
               </Link>
             </div>
           </aside>
