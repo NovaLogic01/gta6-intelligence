@@ -17,9 +17,25 @@ export default function Home() {
     { id: 'gameplay', name: 'Gameplay', count: allEntities.filter(e => e.category === 'gameplay').length, slug: 'gameplay' },
   ];
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GTA VI Intelligence Platform',
+    url: 'https://remarkable-gumption-725330.netlify.app',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://remarkable-gumption-725330.netlify.app/search?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  };
+
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* CINEMATIC HERO SECTION */}
+    <div className="flex flex-col w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      {/* HERO SECTION - Abstract Topographic / Geometry */}
       <section className="relative min-h-[90vh] flex items-center justify-center border-b border-border-primary overflow-hidden bg-bg-primary">
         
         {/* Abstract Geometry Background */}

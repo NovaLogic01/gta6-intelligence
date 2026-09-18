@@ -10,8 +10,25 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
   const relatedArticles = getRelatedArticles(entity.id)
   const relatedTimeline = getRelatedTimelineEvents(entity.id)
   
+  let schemaType = 'Thing'
+  if (entity.category === 'character') schemaType = 'Person'
+  if (entity.category === 'location') schemaType = 'Place'
+  if (entity.category === 'vehicle') schemaType = 'Vehicle'
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': schemaType,
+    name: entity.name,
+    description: entity.description,
+    identifier: entity.id,
+  }
+
   return (
     <div className="section-spacing relative bg-bg-primary min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="absolute inset-0 bg-coordinate-grid opacity-10 pointer-events-none"></div>
       
       <div className="container-article relative z-10">

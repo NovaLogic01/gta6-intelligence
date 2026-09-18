@@ -25,31 +25,33 @@ const displayFont = Inter({
   weight: ['600', '700', '800'],
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gta6intel.com'
+import { siteConfig } from '@/config/site'
+
+const siteUrl = siteConfig.url
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'GTA VI Intel — The Intelligence Layer',
-    template: '%s | GTA VI Intel',
+    default: 'GTA VI Intelligence Platform | The Verified Record',
+    template: '%s | GTA VI Intelligence Platform',
   },
-  description: 'A continuously organized intelligence layer for GTA VI — tracking official announcements, reported developments, characters, locations, gameplay, and more.',
-  keywords: ['GTA VI', 'GTA 6', 'Grand Theft Auto VI', 'Grand Theft Auto 6', 'Rockstar Games', 'GTA VI news', 'GTA VI database', 'GTA 6 release', 'GTA VI characters', 'GTA VI map'],
-  authors: [{ name: 'GTA VI Intel' }],
-  creator: 'GTA VI Intel',
-  publisher: 'GTA VI Intel',
+  description: 'The definitive, source-verified intelligence platform for Grand Theft Auto VI. Tracking characters, locations, vehicles, gameplay features, and official signals.',
+  keywords: ['GTA VI', 'GTA 6 database', 'Leonida', 'GTA VI map', 'GTA VI characters', 'GTA VI intelligence', 'verified GTA 6 news'],
+  authors: [{ name: 'GTA VI Intelligence Platform' }],
+  creator: 'GTA VI Intelligence Platform',
+  publisher: 'GTA VI Intelligence Platform',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'GTA VI Intel',
-    title: 'GTA VI Intel — The Intelligence Layer',
-    description: 'A continuously organized intelligence layer for GTA VI — tracking official announcements, reported developments, characters, locations, gameplay, and more.',
+    siteName: 'GTA VI Intelligence Platform',
+    title: 'GTA VI Intelligence Platform | The Verified Record',
+    description: 'The definitive, source-verified intelligence platform for Grand Theft Auto VI. Tracking characters, locations, vehicles, gameplay features, and official signals.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GTA VI Intel — The Intelligence Layer',
-    description: 'A continuously organized intelligence layer for GTA VI — tracking official announcements, reported developments, characters, locations, gameplay, and more.',
+    title: 'GTA VI Intelligence Platform | The Verified Record',
+    description: 'The definitive, source-verified intelligence platform for Grand Theft Auto VI.',
   },
   robots: {
     index: true,

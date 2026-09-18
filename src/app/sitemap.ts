@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
+import { siteConfig } from '@/config/site'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gta6intel.com'
+const siteUrl = siteConfig.url
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

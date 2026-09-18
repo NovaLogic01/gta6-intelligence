@@ -229,13 +229,3 @@ export interface FilterOption {
   count?: number
 }
 
-// ==========================================
-// AD SLOT (placeholder architecture)
-// ==========================================
-
-export interface AdSlot {
-  id: string
-  position: 'header' | 'sidebar' | 'in-feed' | 'in-article' | 'footer'
-  enabled: boolean
-  format?: string
-}

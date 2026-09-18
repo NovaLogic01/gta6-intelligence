@@ -13,7 +13,9 @@ export const siteConfig = {
   // Monetization placeholder - configure in Session 4+
   monetization: {
     enabled: false,
-    adsenseId: '',
+  },
+  features: {
+    enableRSS: true,
   },
   // Navigation
   navigation: [

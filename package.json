@@ -10,7 +10,9 @@
     "intelligence:fetch": "tsx scripts/intelligence/run.ts",
     "intelligence:dry-run": "tsx scripts/intelligence/run.ts --dry-run",
     "intelligence:validate": "tsx -e \"import { validateArticles } from './scripts/intelligence/validate.ts'; import { articles } from './src/data/articles.ts'; if (validateArticles(articles)) { console.log('VALIDATE: PASS'); process.exit(0); } else { console.log('VALIDATE: FAIL'); process.exit(1); }\"",
-    "intelligence:test": "tsx scripts/intelligence/test.ts"
+    "intelligence:test": "tsx scripts/intelligence/test.ts",
+    "seo:audit": "tsx scripts/seo/audit.ts",
+    "geo:audit": "tsx scripts/geo/audit.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

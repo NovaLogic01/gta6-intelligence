@@ -39,11 +39,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     dateModified: article.updatedAt || article.publishedAt,
     author: {
       '@type': 'Organization',
-      name: 'GTA VI Intel',
+      name: 'GTA VI Intelligence Platform',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'GTA VI Intel',
+      name: 'GTA VI Intelligence Platform',
     },
   }
 
