@@ -126,9 +126,9 @@ export default function Home() {
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
               <div>
                 <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">History Log</div>
-                <h3 className="text-xl text-text-primary font-medium mb-3">What Changed</h3>
+                <h3 className="text-xl text-text-primary font-medium mb-3">Recent Activity</h3>
               </div>
-              <div className="text-sm text-text-secondary leading-relaxed font-light">Track new verifications and chronological data updates.</div>
+              <div className="text-sm text-text-secondary leading-relaxed font-light">Track Database Additions</div>
             </Link>
 
             <Link href="/explore" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">

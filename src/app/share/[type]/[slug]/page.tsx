@@ -5,6 +5,8 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { ShareButton } from '@/components/ui/ShareButton';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 export function generateStaticParams() {
   const entityParams = allEntities.map(e => ({ type: 'entity', slug: e.slug }))
   const articleParams = articles.map(a => ({ type: 'article', slug: a.slug }))
@@ -70,7 +72,7 @@ export default function ShareCardPage({ params }: { params: { type: string, slug
           <ShareButton 
             title={title} 
             description={description} 
-            url={'https://gta6intel.com/' + category + 's/' + data.slug} 
+            url={siteConfig.url + '/' + category + 's/' + data.slug} 
           />
         </div>
       </div>

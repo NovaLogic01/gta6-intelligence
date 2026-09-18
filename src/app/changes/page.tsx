@@ -5,8 +5,8 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'What Changed | GTA VI Intelligence Platform',
-  description: 'Track the latest additions, updates, and status changes in the GTA VI knowledge base.',
+  title: 'Recent Updates | GTA VI Intelligence Platform',
+  description: 'Track the most recently added or verified entities in the GTA VI knowledge base.',
 }
 
 export default function ChangesPage() {
@@ -16,9 +16,9 @@ export default function ChangesPage() {
     <div className="section-spacing">
       <div className="container-narrow">
         <SectionHeader
-          eyebrow="Intelligence History"
-          title="What Changed"
-          description="A chronological log of verified updates to the knowledge graph. Only proven changes are recorded here."
+          eyebrow="Database Updates"
+          title="Recent Activity"
+          description="A log of entities that were recently added to the database or received formal verification."
         />
 
         {changes.length > 0 ? (

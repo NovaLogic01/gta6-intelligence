@@ -7,16 +7,14 @@ import { StatusBadge } from '@/components/ui/StatusBadge'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import Link from 'next/link'
 
-type FilterType = 'ALL' | 'OFFICIAL' | 'TRAILERS' | 'GENERAL' | 'RUMOR' | 'LEAK'
+type FilterType = 'ALL' | 'CONFIRMED' | 'OFFICIALLY_SHOWN' | 'REPORTED' | 'RUMOR' | 'SPECULATION'
 
 export default function TimelinePage() {
   const [filter, setFilter] = useState<FilterType>('ALL')
 
   const filteredEvents = timelineEvents.filter(e => {
     if (filter === 'ALL') return true
-    if (filter === 'RUMOR') return e.status === 'RUMOR' || e.status === 'SPECULATION'
-    if (filter === 'LEAK') return e.status === 'REPORTED'
-    return e.category === filter as string
+    return e.status === filter
   })
 
   return (
@@ -29,7 +27,7 @@ export default function TimelinePage() {
         />
 
         <div className="flex flex-wrap gap-2 mb-16 border-b border-border-primary/30 pb-6">
-          {(['ALL', 'OFFICIAL', 'TRAILERS', 'GENERAL', 'RUMOR', 'LEAK'] as FilterType[]).map(f => (
+          {(['ALL', 'CONFIRMED', 'OFFICIALLY_SHOWN', 'REPORTED', 'RUMOR', 'SPECULATION'] as FilterType[]).map(f => (
             <button
               key={f}
               onClick={() => setFilter(f)}
