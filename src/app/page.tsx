@@ -209,9 +209,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="mt-16 pt-12 border-t border-border-primary/50">
-            <h3 className="text-caption text-text-muted mb-6 uppercase tracking-widest">Awaiting spatial data integration...</h3>
-          </div>
+          {/* Removed obsolete spatial placeholder */}
         </div>
       </section>
 
