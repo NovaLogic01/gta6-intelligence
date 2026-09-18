@@ -7,7 +7,7 @@ Remote: origin
 HEAD: 8c05dffbc263ea7380285a0147642e0b14953842
 
 ## Netlify
-Authenticated: FAIL
+Authenticated: FAIL (Netlify CLI is unable to be installed or executed in this environment, preventing `netlify login` from being run)
 Site: FAIL
 Site ID: FAIL
 Repository connected: FAIL
