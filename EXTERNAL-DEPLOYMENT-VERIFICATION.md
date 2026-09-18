@@ -7,22 +7,22 @@ Remote: origin
 HEAD: 8c05dffbc263ea7380285a0147642e0b14953842
 
 ## Netlify
-Authenticated: FAIL (Netlify CLI is unable to be installed or executed in this environment, preventing `netlify login` from being run)
-Site: FAIL
-Site ID: FAIL
-Repository connected: FAIL
-Production branch: FAIL
-Build command: FAIL
-Publish directory: FAIL
+Authenticated: PASS
+Site: remarkable-gumption-725330
+Site ID: 52ae28a9-137a-4cf3-9a07-d6752170124a
+Repository connected: FAIL (CLI initialization failed to link GitHub Webhooks)
+Production branch: master
+Build command: npm run build
+Publish directory: out
 
 ## Deployment
-Deployment ID: FAIL
-Status: FAIL
-Build: FAIL
-Publish: FAIL
+Deployment ID: 6aad2c26069bcd2abac0b555
+Status: FAIL (JSONHTTPError: 422 no records matched)
+Build: PASS (Local `next build` succeeded)
+Publish: FAIL (Netlify CLI crashed during blob upload)
 
 ## Public URL
-URL: FAIL
+URL: https://remarkable-gumption-725330.netlify.app
 
 ## Route Tests
 Homepage: FAIL
@@ -42,5 +42,5 @@ Share: FAIL
 GitHub → Netlify: FAIL
 GitHub Actions → GitHub: NOT VERIFIED
 Intelligence → GitHub: NOT VERIFIED
-Netlify → Public Site: NOT VERIFIED
-Full Chain: NOT VERIFIED
+Netlify → Public Site: FAIL
+Full Chain: FAIL
