@@ -27,7 +27,7 @@ export default function DatabasePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map(category => (
-            <Link href={`/database/${category.slug}`} key={category.id} className="group relative p-6 bg-bg-secondary/40 border border-border-primary/50 hover:bg-bg-hover transition-colors flex flex-col h-full overflow-hidden">
+            <Link href={category.href} key={category.id} className="group relative p-6 bg-bg-secondary/40 border border-border-primary/50 hover:bg-bg-hover transition-colors flex flex-col h-full overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-border-primary/50 group-hover:bg-accent-blue transition-colors"></div>
               
               <div className="flex items-start justify-between mb-8">
