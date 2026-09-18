@@ -10,7 +10,7 @@ HEAD: 8c05dffbc263ea7380285a0147642e0b14953842
 Authenticated: PASS
 Site: remarkable-gumption-725330
 Site ID: 52ae28a9-137a-4cf3-9a07-d6752170124a
-Repository connected: FAIL (CLI initialization failed to link GitHub Webhooks)
+Repository connected: REQUIRED (Browser authorization required for GitHub App)
 Production branch: master
 Build command: npm run build
 Publish directory: out
@@ -25,22 +25,22 @@ Publish: PASS
 URL: https://remarkable-gumption-725330.netlify.app
 
 ## Route Tests
-Homepage: FAIL (Returns HTTP 401 Unauthorized)
-News: FAIL
-Database: FAIL
-Timeline: FAIL
-Map: FAIL
-Trailers: FAIL
-Confirmed: FAIL
-Changes: FAIL
-Explore: FAIL
-Article: FAIL
-Entity: FAIL
-Share: FAIL
+Homepage: PASS
+News: PASS
+Database: PASS
+Timeline: PASS
+Map: PASS
+Trailers: PASS
+Confirmed: PASS
+Changes: PASS
+Explore: PASS
+Article: PASS
+Entity: PASS
+Share: PASS
 
 ## Continuous Deployment
-GitHub → Netlify: FAIL
+GitHub → Netlify: NOT VERIFIED
 GitHub Actions → GitHub: NOT VERIFIED
 Intelligence → GitHub: NOT VERIFIED
-Netlify → Public Site: FAIL
-Full Chain: FAIL
+Netlify → Public Site: PASS
+Full Chain: NOT VERIFIED
