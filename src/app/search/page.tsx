@@ -90,6 +90,18 @@ export default function SearchPage() {
             </>
           )}
         </div>
+
+        <div className="mt-16 pt-8 border-t border-border-primary/30 text-center">
+          <p className="text-sm font-mono text-text-tertiary mb-4">NOT FINDING WHAT YOU&apos;RE LOOKING FOR?</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/confirmed" className="text-xs font-mono tracking-widest uppercase border border-accent-blue/50 text-accent-blue hover:bg-accent-blue/10 px-4 py-2 rounded transition-colors">
+              Verify a Claim
+            </Link>
+            <Link href="/explore" className="text-xs font-mono tracking-widest uppercase border border-border-primary text-text-secondary hover:text-text-primary hover:border-border-primary/80 px-4 py-2 rounded transition-colors">
+              Explore the Graph
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )

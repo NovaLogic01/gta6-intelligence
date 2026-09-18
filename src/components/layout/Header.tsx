@@ -10,6 +10,7 @@ export function Header() {
   const navLinks = [
     { name: 'News', href: '/news' },
     { name: 'Database', href: '/database' },
+    { name: 'Explore', href: '/explore' },
     { name: 'Timeline', href: '/timeline' },
     { name: 'Map', href: '/map' },
     { name: 'Trailers', href: '/trailers' },

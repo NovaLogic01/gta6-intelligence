@@ -137,7 +137,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
         {/* Related articles */}
         {article.relatedArticleIds && article.relatedArticleIds.length > 0 && (
-          <section className="pt-8 border-t border-border-primary" aria-labelledby="related-heading">
+          <section className="pt-8 border-t border-border-primary mb-8" aria-labelledby="related-heading">
             <h2 id="related-heading" className="text-subheading font-display text-text-primary mb-6">
               Related Intelligence
             </h2>
@@ -166,6 +166,22 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             </div>
           </section>
         )}
+
+        {/* SHARE / DISCOVERY TOOLS */}
+        <div className="mt-8 pt-8 border-t border-border-primary/30 flex flex-wrap gap-4">
+          <Link 
+            href={`/share/article/${article.slug}`} 
+            className="px-6 py-3 bg-bg-secondary text-text-primary text-xs font-mono tracking-widest uppercase rounded hover:bg-bg-tertiary transition-colors border border-border-primary/50"
+          >
+            Generate Share Card
+          </Link>
+          <Link 
+            href="/explore" 
+            className="px-6 py-3 bg-accent-blue/10 text-accent-blue text-xs font-mono tracking-widest uppercase rounded hover:bg-accent-blue/20 transition-colors border border-accent-blue/30"
+          >
+            Explore the Graph
+          </Link>
+        </div>
       </div>
     </article>
   )

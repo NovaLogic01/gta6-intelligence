@@ -3,6 +3,7 @@ import { articles } from '@/data/articles';
 import { timelineEvents } from '@/data/timeline';
 import { databaseCategories as categories } from '@/data/categories';
 import { StatusBadge } from '@/components/ui/StatusBadge';
+import { DiscoveryQueue } from '@/components/ui/DiscoveryQueue';
 import { formatDistanceToNow } from '@/lib/dateUtils';
 
 export default function Home() {
@@ -97,6 +98,61 @@ export default function Home() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RETENTION / DISCOVERY ENGINE */}
+      <section className="py-24 border-t border-border-subtle bg-bg-primary relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-accent-blue/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="container-wide relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-baseline mb-12 border-b border-border-primary/50 pb-6">
+            <h2 className="text-subheading font-light tracking-wide uppercase text-text-primary">
+              <span className="font-bold">Explore</span> Intelligence
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link href="/confirmed" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+              <div>
+                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Verification Tool</div>
+                <h3 className="text-xl text-text-primary font-medium mb-3">Is This Confirmed?</h3>
+              </div>
+              <div className="text-sm text-text-secondary leading-relaxed font-light">Check claims deterministically against the knowledge base.</div>
+            </Link>
+            
+            <Link href="/changes" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+              <div>
+                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">History Log</div>
+                <h3 className="text-xl text-text-primary font-medium mb-3">What Changed</h3>
+              </div>
+              <div className="text-sm text-text-secondary leading-relaxed font-light">Track new verifications and chronological data updates.</div>
+            </Link>
+
+            <Link href="/explore" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+              <div>
+                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Discovery</div>
+                <h3 className="text-xl text-text-primary font-medium mb-3">Knowledge Explorer</h3>
+              </div>
+              <div className="text-sm text-text-secondary leading-relaxed font-light">Navigate the intelligence network sequentially.</div>
+            </Link>
+
+            <Link href="/timeline" className="group p-6 md:p-8 border border-border-primary/40 hover:border-accent-blue/50 bg-bg-secondary/20 transition-all duration-300 flex flex-col justify-between min-h-[180px] rounded-subtle hover:bg-bg-secondary/40 relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-blue/40 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+              <div>
+                <div className="text-[10px] font-mono text-text-tertiary mb-3 uppercase tracking-widest group-hover:text-accent-blue transition-colors">Chronology</div>
+                <h3 className="text-xl text-text-primary font-medium mb-3">Interactive Timeline</h3>
+              </div>
+              <div className="text-sm text-text-secondary leading-relaxed font-light">Follow the history of GTA VI becoming known.</div>
+            </Link>
+          </div>
+
+          <div className="mt-12 pt-12 border-t border-border-primary/30">
+            <h3 className="text-sm font-mono tracking-widest text-text-tertiary mb-6 uppercase">Random Intelligence</h3>
+            <DiscoveryQueue />
           </div>
         </div>
       </section>

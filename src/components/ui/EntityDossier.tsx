@@ -124,6 +124,22 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
                 </ul>
               </div>
             )}
+
+            {/* SHARE / DISCOVERY TOOLS */}
+            <div className="mt-16 pt-8 border-t border-border-primary/30 flex flex-wrap gap-4">
+              <Link 
+                href={`/share/entity/${entity.slug}`} 
+                className="px-6 py-3 bg-bg-secondary text-text-primary text-xs font-mono tracking-widest uppercase rounded hover:bg-bg-tertiary transition-colors border border-border-primary/50"
+              >
+                Generate Share Card
+              </Link>
+              <Link 
+                href="/explore" 
+                className="px-6 py-3 bg-accent-blue/10 text-accent-blue text-xs font-mono tracking-widest uppercase rounded hover:bg-accent-blue/20 transition-colors border border-accent-blue/30"
+              >
+                Explore Connections
+              </Link>
+            </div>
           </aside>
         </div>
       </div>
