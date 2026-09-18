@@ -1,0 +1,46 @@
+name: Netlify Continuous Deployment
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["GTA VI Intelligence Ingestion"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build Next.js
+        run: npm run build
+        
+      - name: Verify output directory
+        run: |
+          if [ ! -d "out" ]; then
+            echo "out/ directory does not exist!"
+            exit 1
+          fi
+          
+      - name: Deploy to Netlify
+        run: npx netlify-cli deploy --prod --dir=out --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
