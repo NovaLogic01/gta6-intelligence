@@ -4,6 +4,7 @@ import { formatDate } from '@/lib/utils'
 import { getSourceById } from '@/data/sources'
 import { getRelatedEntities, getRelatedArticles, getRelatedTimelineEvents } from '@/lib/graph'
 import { BaseEntity } from '@/types'
+import { AdsterraResponsive, Adsterra300x250 } from '@/components/ads/Adsterra'
 
 export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEntity, backLink: string, backLabel: string }) {
   const relatedEntities = getRelatedEntities(entity.id)
@@ -63,6 +64,8 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
             {entity.description}
           </p>
         </header>
+
+        <AdsterraResponsive />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
@@ -168,6 +171,8 @@ export function EntityDossier({ entity, backLink, backLabel }: { entity: BaseEnt
                 <span className="text-accent-blue/50 group-hover:text-accent-blue">&rarr;</span>
               </Link>
             </div>
+
+            <Adsterra300x250 />
           </aside>
         </div>
       </div>

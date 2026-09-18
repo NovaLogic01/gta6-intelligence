@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { AdsterraResponsive } from '@/components/ads/Adsterra';
 import { allEntities } from '@/lib/graph';
 import { articles } from '@/data/articles';
 
@@ -115,6 +116,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AdsterraResponsive />
 
       {/* LATEST SIGNALS (Editorial Rows) */}
       <section className="py-24 bg-bg-secondary relative">

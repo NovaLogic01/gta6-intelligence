@@ -5,6 +5,7 @@ import { getSourceById } from '@/data/sources'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AdsterraResponsive, AdsterraNative } from '@/components/ads/Adsterra'
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
@@ -114,6 +115,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
         </header>
 
+        <AdsterraResponsive />
+
         {/* Article body */}
         <div className="mb-16 editorial-content">
           {paragraphs.map((paragraph, index) => (
@@ -125,7 +128,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
         {/* Tags */}
         {article.tags && article.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-16 pb-8 border-b border-border-primary/30">
+          <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b border-border-primary/30">
             {article.tags.map((tag) => (
               <span key={tag} className="px-2 py-1 text-[10px] font-mono uppercase tracking-widest text-text-tertiary bg-bg-secondary/50 border border-border-primary/50">
                 #{tag}
@@ -133,6 +136,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             ))}
           </div>
         )}
+
+        <AdsterraNative />
 
         {/* Related articles */}
         {article.relatedArticleIds && article.relatedArticleIds.length > 0 && (

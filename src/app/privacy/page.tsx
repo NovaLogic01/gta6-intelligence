@@ -40,7 +40,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">4. Cookies and Local Storage</h2>
           <p>
-            This website currently operates without setting non-essential cookies. We do not use localized tracking mechanisms for user profiling. If features requiring persistent settings are added in the future, standard browser local storage may be utilized, and this policy will be updated accordingly.
+            This website and our third-party partners (such as advertising networks) may use cookies, web beacons, and similar tracking technologies to serve advertisements, measure ad performance, and improve user experience.
           </p>
         </section>
 
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">6. Advertising</h2>
           <p>
-            The platform currently operates without advertising. In the event that advertising (such as Google AdSense) is activated, this policy will be updated to reflect the use of advertising cookies and third-party data collection practices, and appropriate consent mechanisms will be implemented for users in applicable jurisdictions (including the EEA, UK, and Switzerland).
+            Our platform uses third-party advertising technology (specifically Adsterra) to serve ads when you visit our website. These companies may use aggregated information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.
           </p>
         </section>
 
