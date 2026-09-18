@@ -16,16 +16,16 @@ Build command: npm run build
 Publish directory: out
 
 ## Deployment
-Deployment ID: 6aad2c26069bcd2abac0b555
-Status: FAIL (JSONHTTPError: 422 no records matched)
-Build: PASS (Local `next build` succeeded)
-Publish: FAIL (Netlify CLI crashed during blob upload)
+Deployment ID: 6aad2e2a8aa7ec050fb3ca71
+Status: PASS
+Build: PASS
+Publish: PASS
 
 ## Public URL
 URL: https://remarkable-gumption-725330.netlify.app
 
 ## Route Tests
-Homepage: FAIL
+Homepage: FAIL (Returns HTTP 401 Unauthorized)
 News: FAIL
 Database: FAIL
 Timeline: FAIL
