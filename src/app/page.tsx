@@ -22,10 +22,10 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'GTA VI Intelligence Platform',
-    url: 'https://remarkable-gumption-725330.netlify.app',
+    url: 'https://witchway.netlify.app',
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://remarkable-gumption-725330.netlify.app/search?q={search_term_string}',
+      target: 'https://witchway.netlify.app/search?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   };

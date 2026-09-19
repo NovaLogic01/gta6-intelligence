@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { AdsterraSocialBar } from '@/components/ads/AdsterraSocialBar'
+import { ExploreFurtherCard } from '@/components/ads/ExploreFurtherCard'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -100,6 +101,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
+        <ExploreFurtherCard />
         <Footer />
         <AdsterraSocialBar />
       </body>

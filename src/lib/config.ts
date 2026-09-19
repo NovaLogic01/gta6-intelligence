@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'GTA VI Intel',
   tagline: 'The Intelligence Layer',
   description: 'A continuously organized intelligence layer for GTA VI — tracking official announcements, reported developments, characters, locations, gameplay, and more.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://remarkable-gumption-725330.netlify.app',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://witchway.netlify.app',
   creator: 'GTA VI Intel',
   // Analytics - Prepared for Session 6+
   analytics: {
