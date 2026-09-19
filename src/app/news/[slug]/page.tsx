@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { AdsterraResponsive, AdsterraNative } from '@/components/ads/Adsterra'
+import { SmartlinkAction } from '@/components/ads/SmartlinkAction'
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
@@ -137,6 +138,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </div>
         )}
 
+        <SmartlinkAction />
         <AdsterraNative />
 
         {/* Related articles */}
