@@ -54,7 +54,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-sm font-mono tracking-widest text-text-tertiary uppercase mb-4">6. Advertising</h2>
           <p>
-            Our platform uses third-party advertising technology (specifically Adsterra) to serve ads when you visit our website. These companies may use aggregated information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you.
+            Our platform uses third-party advertising technology (specifically Adsterra and Monetag) to serve ads and push notifications when you visit our website. These companies may use aggregated information (not including your name, address, email address, or telephone number) about your visits to this and other websites in order to provide advertisements about goods and services of interest to you. We do not use Google AdSense.
           </p>
         </section>
 

@@ -22,7 +22,7 @@ export const activities: Activity[] = [
     id: 'act-street-takeovers',
     slug: 'street-takeovers',
     name: 'Street Takeovers',
-    description: 'Illegal car meets and intersection takeovers.',
+    description: 'Illegal car meets and intersection takeovers featured prominently in the game\'s depiction of car culture. Official trailer footage shows intersections blocked by vehicles actively drifting in circles, surrounded by large crowds of spectators filming the events.',
     status: 'OFFICIALLY_SHOWN',
     category: 'activity',
     knownInformation: [

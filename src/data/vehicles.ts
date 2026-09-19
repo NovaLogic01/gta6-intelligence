@@ -40,7 +40,7 @@ export const vehicles: Vehicle[] = [
     id: 'veh-tulip',
     slug: 'tulip',
     name: 'Declasse Tulip',
-    description: 'A classic muscle car seen in the trailer.',
+    description: 'A classic muscle car manufactured by Declasse, featured in official promotional materials. The vehicle is visible both parked and in active use across various locations in the trailer, confirming its return to the Leonida vehicle roster.',
     status: 'OFFICIALLY_SHOWN',
     category: 'vehicle',
     knownInformation: [

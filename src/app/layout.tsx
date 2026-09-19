@@ -77,6 +77,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${displayFont.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script src="https://5gvci.com/act/files/tag.min.js?z=11836364" data-cfasync="false" async></script>
+      </head>
       <body className={`${inter.variable} bg-bg-primary text-text-primary min-h-screen flex flex-col relative`}>
         <div className="bg-noise" aria-hidden="true" />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-blue focus:text-white focus:rounded-subtle">
