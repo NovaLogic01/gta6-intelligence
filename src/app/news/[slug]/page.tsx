@@ -8,6 +8,8 @@ import Link from 'next/link'
 import { AdsterraResponsive, AdsterraNative } from '@/components/ads/Adsterra'
 import { SmartlinkAction } from '@/components/ads/SmartlinkAction'
 
+import { constructMetadata } from '@/lib/seo'
+
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }))
 }
@@ -15,11 +17,16 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const article = articles.find(a => a.slug === params.slug)
   if (!article) return { title: 'Not Found' }
-  return {
-    title: article.title,
+  
+  return constructMetadata({
+    title: `${article.title} | WITCHWAY`,
     description: article.summary,
-    openGraph: { title: article.title, description: article.summary, type: 'article' },
-  }
+    url: `/news/${article.slug}`,
+    type: 'article',
+    keywords: article.tags,
+    publishedTime: article.publishedAt,
+    modifiedTime: article.updatedAt || article.publishedAt,
+  })
 }
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
