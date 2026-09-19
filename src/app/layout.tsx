@@ -78,6 +78,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${displayFont.variable} ${jetbrainsMono.variable}`}>
       <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BWEZB251S"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-3BWEZB251S');
+        ` }}></script>
         <script src="https://5gvci.com/act/files/tag.min.js?z=11836364" data-cfasync="false" async></script>
         <script dangerouslySetInnerHTML={{ __html: `(function(s){s.dataset.zone='11836369',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))` }}></script>
         <script dangerouslySetInnerHTML={{ __html: `(function(s){s.dataset.zone='11836370',s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))` }}></script>
